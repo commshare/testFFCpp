@@ -1,0 +1,12 @@
+*.mp4
+*.o
+*.a
+*.obj
+
+
+SI4/
+CMakeFiles/
+*.cmake
+
+###output file
+*.out
