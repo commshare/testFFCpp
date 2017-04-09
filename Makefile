@@ -102,24 +102,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named testffcpp
+# Target rules for targets named testffcpp.out
 
 # Build rule for target.
-testffcpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 testffcpp
-.PHONY : testffcpp
+testffcpp.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 testffcpp.out
+.PHONY : testffcpp.out
 
 # fast build rule for target.
-testffcpp/fast:
-	$(MAKE) -f CMakeFiles/testffcpp.dir/build.make CMakeFiles/testffcpp.dir/build
-.PHONY : testffcpp/fast
+testffcpp.out/fast:
+	$(MAKE) -f CMakeFiles/testffcpp.out.dir/build.make CMakeFiles/testffcpp.out.dir/build
+.PHONY : testffcpp.out/fast
 
 AV.o: AV.cpp.o
 .PHONY : AV.o
 
 # target to build an object file
 AV.cpp.o:
-	$(MAKE) -f CMakeFiles/testffcpp.dir/build.make CMakeFiles/testffcpp.dir/AV.cpp.o
+	$(MAKE) -f CMakeFiles/testffcpp.out.dir/build.make CMakeFiles/testffcpp.out.dir/AV.cpp.o
 .PHONY : AV.cpp.o
 
 AV.i: AV.cpp.i
@@ -127,7 +127,7 @@ AV.i: AV.cpp.i
 
 # target to preprocess a source file
 AV.cpp.i:
-	$(MAKE) -f CMakeFiles/testffcpp.dir/build.make CMakeFiles/testffcpp.dir/AV.cpp.i
+	$(MAKE) -f CMakeFiles/testffcpp.out.dir/build.make CMakeFiles/testffcpp.out.dir/AV.cpp.i
 .PHONY : AV.cpp.i
 
 AV.s: AV.cpp.s
@@ -135,15 +135,39 @@ AV.s: AV.cpp.s
 
 # target to generate assembly for a file
 AV.cpp.s:
-	$(MAKE) -f CMakeFiles/testffcpp.dir/build.make CMakeFiles/testffcpp.dir/AV.cpp.s
+	$(MAKE) -f CMakeFiles/testffcpp.out.dir/build.make CMakeFiles/testffcpp.out.dir/AV.cpp.s
 .PHONY : AV.cpp.s
+
+log.o: log.cpp.o
+.PHONY : log.o
+
+# target to build an object file
+log.cpp.o:
+	$(MAKE) -f CMakeFiles/testffcpp.out.dir/build.make CMakeFiles/testffcpp.out.dir/log.cpp.o
+.PHONY : log.cpp.o
+
+log.i: log.cpp.i
+.PHONY : log.i
+
+# target to preprocess a source file
+log.cpp.i:
+	$(MAKE) -f CMakeFiles/testffcpp.out.dir/build.make CMakeFiles/testffcpp.out.dir/log.cpp.i
+.PHONY : log.cpp.i
+
+log.s: log.cpp.s
+.PHONY : log.s
+
+# target to generate assembly for a file
+log.cpp.s:
+	$(MAKE) -f CMakeFiles/testffcpp.out.dir/build.make CMakeFiles/testffcpp.out.dir/log.cpp.s
+.PHONY : log.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/testffcpp.dir/build.make CMakeFiles/testffcpp.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/testffcpp.out.dir/build.make CMakeFiles/testffcpp.out.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -151,7 +175,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/testffcpp.dir/build.make CMakeFiles/testffcpp.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/testffcpp.out.dir/build.make CMakeFiles/testffcpp.out.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -159,7 +183,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/testffcpp.dir/build.make CMakeFiles/testffcpp.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/testffcpp.out.dir/build.make CMakeFiles/testffcpp.out.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -170,10 +194,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... testffcpp"
+	@echo "... testffcpp.out"
 	@echo "... AV.o"
 	@echo "... AV.i"
 	@echo "... AV.s"
+	@echo "... log.o"
+	@echo "... log.i"
+	@echo "... log.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

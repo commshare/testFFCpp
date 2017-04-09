@@ -1,6 +1,6 @@
 
 #include "AV.h"
-
+#include "log.hpp"
 #include <cassert>
 
 using namespace cppav;
@@ -138,7 +138,7 @@ int AV::Open(const std::string& filename) {
         _lastErrStr = "Is open!\n";
         _isOpen = true;
     }
-
+	LOG_DEBUG(_lastErrStr);
     return ret;
 }
 
