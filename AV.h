@@ -23,9 +23,11 @@ extern "C" {
 #if __cplusplus
 };
 #endif
+#include "log.hpp"
 
 #include <fstream>
 #include <string>
+
 
 namespace cppav {
 

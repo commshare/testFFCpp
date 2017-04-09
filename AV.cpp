@@ -1,6 +1,6 @@
 
 #include "AV.h"
-#include "log.hpp"
+
 #include <cassert>
 
 using namespace cppav;

@@ -92,6 +92,8 @@ int main(int argc, char *argv[]) {
 	#endif
 
     AV av;
+	Logger::setLogLevel(AV_LOG_DEBUG);
+	LOG_DEBUG("BEGIN BEGIN");
     av.Open(filepath);
     av.SetFrameHandler(HandleFrame);
     av.Play();
