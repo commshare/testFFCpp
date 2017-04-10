@@ -39,6 +39,7 @@ find_package(Freetype REQUIRED)
 include_directories(${FREETYPE_INCLUDE_DIRS})
 
 # Import required CMake files
+#https://github.com/Yalir/sfeMovie/blob/master/cmake/Modules/FindASS.cmake
 set (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/Modules")
 ##
  find_package (ASS REQUIRED)

@@ -8,7 +8,7 @@ SI4/
 ####cmake
 CMakeCache.txt
 CMakeFiles/
-*.cmake
+
 
 ###output file
 *.out
