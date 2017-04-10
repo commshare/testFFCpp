@@ -80,8 +80,12 @@ int AV::Open(const std::string& filename) {
             ret = -2;
             break;
         }
+		
+		av_dump_format(_formatCtx, 0, filename.c_str(), 0);
 
         for(unsigned int i = 0; i < _formatCtx->nb_streams; ++i) {
+			LOG_DEBUG("AVMEDIA_TYPE_VIDEO[%d]",AVMEDIA_TYPE_VIDEO);
+			LOG_DEBUG(_formatCtx->streams[i]->codec->codec_type);
             switch(_formatCtx->streams[i]->codec->codec_type) {
             case AVMEDIA_TYPE_UNKNOWN:			///< Usually treated as AVMEDIA_TYPE_DATA
                 break;
@@ -101,37 +105,40 @@ int AV::Open(const std::string& filename) {
                 break;
             }
         }
-        if(_videoStreamIndex == -1 || _audioStreamIndex == -1) {
-            _lastErrStr = "Didn't find a video/audio stream!\n";
+        if(_videoStreamIndex == -1 && _audioStreamIndex == -1) {
+            _lastErrStr = "Didn't find a video and audio stream!\n";
             ret = -3;
             break;
         }
+		if(_videoStreamIndex != -1 ){
+		    _videoCodecCtx = _formatCtx->streams[_videoStreamIndex]->codec;
+    	   	AVCodec* tmpVidecCodec = avcodec_find_decoder(_videoCodecCtx->codec_id);
+    	    if(tmpVidecCodec == NULL) {
+	       	    _lastErrStr = "Codec not found!\n";
+           		ret = -4;
+            	break;
+    	   	}
+		   	if(avcodec_open2(_videoCodecCtx, tmpVidecCodec, NULL) < 0) {
+		        _lastErrStr = "Could not open codec!\n";
+    	        ret = -5;
+        	    break;
+        	}
+		}
+		if(_audioStreamIndex != -1){
+		    _audioCodecCtx = _formatCtx->streams[_audioStreamIndex]->codec;
+	        AVCodec* tmpAudioCodec = avcodec_find_decoder(_audioCodecCtx->codec_id);
+        	if(tmpAudioCodec == NULL) {
+    	        _lastErrStr = "Codec not found!\n";
+	            ret = -4;
+            	break;
+        	}
+        	if(avcodec_open2(_audioCodecCtx, tmpAudioCodec, NULL) < 0) {
+    	        _lastErrStr = "Could not open codec!\n";
+	            ret = -5;
+            	break;
+        	}
+		}
 
-        _videoCodecCtx = _formatCtx->streams[_videoStreamIndex]->codec;
-        AVCodec* tmpVidecCodec = avcodec_find_decoder(_videoCodecCtx->codec_id);
-        if(tmpVidecCodec == NULL) {
-            _lastErrStr = "Codec not found!\n";
-            ret = -4;
-            break;
-        }
-        if(avcodec_open2(_videoCodecCtx, tmpVidecCodec, NULL) < 0) {
-            _lastErrStr = "Could not open codec!\n";
-            ret = -5;
-            break;
-        }
-
-        _audioCodecCtx = _formatCtx->streams[_audioStreamIndex]->codec;
-        AVCodec* tmpAudioCodec = avcodec_find_decoder(_audioCodecCtx->codec_id);
-        if(tmpAudioCodec == NULL) {
-            _lastErrStr = "Codec not found!\n";
-            ret = -4;
-            break;
-        }
-        if(avcodec_open2(_audioCodecCtx, tmpAudioCodec, NULL) < 0) {
-            _lastErrStr = "Could not open codec!\n";
-            ret = -5;
-            break;
-        }
     } while(0);
 
     if(ret == 0) {
