@@ -11,7 +11,10 @@ project(FFmpegCpp)
 ADD_DEFINITIONS(-std=c++11)
 
 
+SET(CMAKE_CXX_FLAGS "-O2 -std=c++11")
 
+##可以打印出详细的链接信息
+SET(CMAKE_EXE_LINKER_FLAGS "-v")
 
 
 ##
@@ -29,15 +32,19 @@ if(LINUX OR APPLE)
 	#endif(LINUX)
 endif(LINUX OR APPLE)
 
-####freetype2
+####freetype2 load a module like FindFreetype.cmake
 #http://stackoverflow.com/questions/14110769/undefined-reference-with-freetype-2
 #http://stackoverflow.com/questions/23888274/linking-freetype-with-cmake
 find_package(Freetype REQUIRED)
 include_directories(${FREETYPE_INCLUDE_DIRS})
 
-#include the subdirectory containing our libs
-#add_subdirectory (gui)
-#include_directories(gui)
+# Import required CMake files
+set (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/Modules")
+##
+ find_package (ASS REQUIRED)
+
+
+
 
 ##兼容我的ubuntu16
 set(FFMPEG_INC_DIRS /root/.ffmpeg_build/include /root/ffmpeg_build/include)
@@ -81,5 +88,5 @@ target_link_libraries(
 	vorbisfile
         x265
   ${FREETYPE_LIBRARIES}
-	
+  ${LIBASS_LIBRARIES}
 )

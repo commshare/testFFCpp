@@ -14,6 +14,9 @@
 # EXTERNAL cache entries
 ########################
 
+//The directory containing a CMake configuration file for ASS.
+ASS_DIR:PATH=ASS_DIR-NOTFOUND
+
 //Path to a program.
 CMAKE_AR:FILEPATH=/usr/bin/ar
 
@@ -180,6 +183,15 @@ FREETYPE_INCLUDE_DIR_ft2build:PATH=/usr/include/freetype2
 //Path to a library.
 FREETYPE_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libfreetype.so
 
+//Path to a file.
+LIBASS_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a library.
+LIBASS_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libass.so
+
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
+
 
 ########################
 # INTERNAL cache entries
@@ -312,12 +324,58 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding ASS
+FIND_PACKAGE_MESSAGE_DETAILS_ASS:INTERNAL=[/usr/lib/x86_64-linux-gnu/libass.so][/usr/include][v()]
 //Details about finding Freetype
 FIND_PACKAGE_MESSAGE_DETAILS_Freetype:INTERNAL=[/usr/lib/x86_64-linux-gnu/libfreetype.so][/usr/include/freetype2;/usr/include/x86_64-linux-gnu/freetype2][v()]
+//Details about finding PkgConfig
+FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v0.29.1()]
 //ADVANCED property for variable: FREETYPE_INCLUDE_DIR_freetype2
 FREETYPE_INCLUDE_DIR_freetype2-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: FREETYPE_INCLUDE_DIR_ft2build
 FREETYPE_INCLUDE_DIR_ft2build-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: FREETYPE_LIBRARY
 FREETYPE_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: LIBASS_INCLUDE_DIR
+LIBASS_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: LIBASS_LIBRARY
+LIBASS_LIBRARY-ADVANCED:INTERNAL=1
+PC_LIBASS_CFLAGS:INTERNAL=-I/usr/include/harfbuzz;-I/usr/include/freetype2;-I/usr/include/fribidi;-I/usr/include/freetype2
+PC_LIBASS_CFLAGS_I:INTERNAL=
+PC_LIBASS_CFLAGS_OTHER:INTERNAL=
+PC_LIBASS_FOUND:INTERNAL=1
+PC_LIBASS_INCLUDEDIR:INTERNAL=/usr/include
+PC_LIBASS_INCLUDE_DIRS:INTERNAL=/usr/include/harfbuzz;/usr/include/freetype2;/usr/include/fribidi;/usr/include/freetype2
+PC_LIBASS_LDFLAGS:INTERNAL=-lass
+PC_LIBASS_LDFLAGS_OTHER:INTERNAL=
+PC_LIBASS_LIBDIR:INTERNAL=/usr/lib/x86_64-linux-gnu
+PC_LIBASS_LIBRARIES:INTERNAL=ass
+PC_LIBASS_LIBRARY_DIRS:INTERNAL=
+PC_LIBASS_LIBS:INTERNAL=
+PC_LIBASS_LIBS_L:INTERNAL=
+PC_LIBASS_LIBS_OTHER:INTERNAL=
+PC_LIBASS_LIBS_PATHS:INTERNAL=
+PC_LIBASS_PREFIX:INTERNAL=/usr
+PC_LIBASS_STATIC_CFLAGS:INTERNAL=-I/usr/include/harfbuzz;-I/usr/include/freetype2;-I/usr/include/fribidi;-I/usr/include/freetype2
+PC_LIBASS_STATIC_CFLAGS_I:INTERNAL=
+PC_LIBASS_STATIC_CFLAGS_OTHER:INTERNAL=
+PC_LIBASS_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/harfbuzz;/usr/include/freetype2;/usr/include/fribidi;/usr/include/freetype2
+PC_LIBASS_STATIC_LDFLAGS:INTERNAL=-lass;-lm;-lharfbuzz;-lfontconfig;-lexpat;-lfreetype;-lexpat;-lfribidi;-lfreetype;-lz;-lpng12;-lz;-lm
+PC_LIBASS_STATIC_LDFLAGS_OTHER:INTERNAL=
+PC_LIBASS_STATIC_LIBDIR:INTERNAL=
+PC_LIBASS_STATIC_LIBRARIES:INTERNAL=ass;m;harfbuzz;fontconfig;expat;freetype;expat;fribidi;freetype;z;png12;z;m
+PC_LIBASS_STATIC_LIBRARY_DIRS:INTERNAL=
+PC_LIBASS_STATIC_LIBS:INTERNAL=
+PC_LIBASS_STATIC_LIBS_L:INTERNAL=
+PC_LIBASS_STATIC_LIBS_OTHER:INTERNAL=
+PC_LIBASS_STATIC_LIBS_PATHS:INTERNAL=
+PC_LIBASS_VERSION:INTERNAL=0.13.1
+PC_LIBASS_libass_INCLUDEDIR:INTERNAL=
+PC_LIBASS_libass_LIBDIR:INTERNAL=
+PC_LIBASS_libass_PREFIX:INTERNAL=
+PC_LIBASS_libass_VERSION:INTERNAL=
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
+__pkg_config_checked_PC_LIBASS:INTERNAL=1
+prefix_result:INTERNAL=/usr/lib/x86_64-linux-gnu
 
