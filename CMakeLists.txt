@@ -58,6 +58,15 @@ link_directories(${FFMPEG_LIB_DIRS})
 set(SOURCE_FILES main.cpp AV.cpp log.cpp)
 add_executable(testffcpp.out ${SOURCE_FILES})
 
+#这些库在 /usr/lib/x86_64-linux-gnu
+#/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libtheoraenc.so
+#http://stackoverflow.com/questions/9803726/failed-to-compile-http-live-video-stream-segmenter-and-distributor
+#You're missing libva, and you also don't need it. You can add --disable-vaapi to the ffmpeg configure. Otherwise, you'll need to add -lva to your LDFLAGS.
+#:/usr/lib/x86_64-linux-gnu# find ./ -name "*libva*"
+#va-x11
+# undefined reference to `vaGetDisplay'
+#vdpau  http://stackoverflow.com/questions/38850260/errors-when-compiling-c-code-with-ffmpeg-library
+#vdp_device_create_x11'
 
 #不需要-lfreetype，直接用  ${FREETYPE_LIBRARIES} ，因为target_link_libraries是与平台无关的
 ###target_link_libraries(demo ${FREETYPE_LIBRARIES})
@@ -90,4 +99,14 @@ target_link_libraries(
         x265
   ${FREETYPE_LIBRARIES}
   ${LIBASS_LIBRARIES}
+  	numa
+  	lzma
+  	theora
+  	theoraenc
+  	theoradec
+  	va
+  	X11
+  	va-x11
+  	va-drm
+  	vdpau
 )
