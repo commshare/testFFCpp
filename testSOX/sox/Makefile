@@ -32,8 +32,8 @@ all: sox.a #sox.ra
 release: sox.ra
 
 sox.a: $(OBJ_COMM) | ../lib
-	$(ARRU) ../../lib/sox.a $(OBJ_COMM)
-	$(ARRU) ../../lib/libsox.a $(OBJ_COMM)
+	$(ARRU) ../lib/sox.a $(OBJ_COMM)
+	$(ARRU) ../lib/libsox.a $(OBJ_COMM)
 #	ranlib sox.a
 
 ../lib:
@@ -54,5 +54,5 @@ install:
 clean: 
 	rm -f *.o
 	rm -f *.ro
-	rm -f ../../lib/sox.a
+	rm -f ../lib/sox.a
 
